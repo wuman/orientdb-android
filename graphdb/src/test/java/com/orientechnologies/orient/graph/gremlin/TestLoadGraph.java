@@ -4,12 +4,17 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.kxml2.io.KXmlParser;
+import org.kxml2.io.KXmlSerializer;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.orientechnologies.orient.client.db.ODatabaseHelper;
 import com.orientechnologies.orient.core.config.OGlobalConfiguration;
 import com.orientechnologies.orient.core.db.graph.OGraphDatabase;
 import com.tinkerpop.blueprints.impls.orient.OrientBatchGraph;
+import com.tinkerpop.blueprints.util.io.graphml.AndroidXmlFactory;
 import com.tinkerpop.blueprints.util.io.graphml.GraphMLReader;
 
 public class TestLoadGraph {
@@ -30,6 +35,18 @@ public class TestLoadGraph {
   public TestLoadGraph(final String[] args) {
     inputFile = args.length > 0 ? args[0] : INPUT_FILE;
     dbURL = args.length > 1 ? args[1] : DBURL;
+  }
+  
+  @BeforeTest
+  public static void setupTest() {
+      AndroidXmlFactory.parser = new KXmlParser();
+      AndroidXmlFactory.serializer = new KXmlSerializer();
+  }
+  
+  @AfterTest
+  public static void teardownTest() {
+      AndroidXmlFactory.parser = null;
+      AndroidXmlFactory.serializer = null;
   }
 
   @Test
