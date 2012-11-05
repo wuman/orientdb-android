@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.wu-man</groupId>
 		<artifactId>orientdb-android-parent</artifactId>
-		<version>1.1.0.0</version>
+		<version>1.1.0.1-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
 
