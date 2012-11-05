@@ -1,6 +1,8 @@
 ORIENTDB-ANDROID
 ================
 
+![Feature Image](https://github.com/wuman/orientdb-android/raw/master/doc/images/orientdb-android-logo.png)
+
 OrientDB-Android is a port/fork of [OrientDB](http://www.orientdb.org/) for the
 Android platform.
 
