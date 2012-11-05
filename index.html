@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Orientdb-android by wuman</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/wuman/orientdb-android">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/wuman/orientdb-android/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/wuman/orientdb-android/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Orientdb-android</h1>
+          <p>Android Port of OrientDB: A NoSQL Document Graph DBMS</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/wuman">wuman</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>ORIENTDB-ANDROID</h1>
+
+<p>OrientDB-Android is a port/fork of <a href="http://www.orientdb.org/">OrientDB</a> for the
+Android platform.</p>
+
+<p>Currently the port removes all server implementations as they use the
+<code>javax.management.*</code> package, which is not part of the Android classpath.
+The port is designed to be used in conjunction with the 
+<a href="https://github.com/wuman/blueprints-android">blueprints-android</a> library.</p>
+
+<p>Currently only the following modules are ported:</p>
+
+<ul>
+<li>orient-android-commons</li>
+<li>orientdb-android-core</li>
+<li>orientdb-android-enterprise</li>
+<li>orientdb-android-client</li>
+<li>orientdb-android-nativeos</li>
+<li>orientdb-android-object</li>
+<li>orientdb-android-tools</li>
+<li>orientdb-android-distribution</li>
+</ul><p>Note that orientdb-android is still under development and  only 
+<code>orient-android-commons</code> and <code>orientdb-android-core</code> have been used and tested 
+in the wild, so use it at your own risk. We welcome contributions and feedbacks.</p>
+
+<p>The current release of orientdb-android is 1.1.0.0, which is in line with version
+1.1.0 of the upstream OrientDB. </p>
+
+<h2>Including in Your Project</h2>
+
+<p>There are two ways to include orientdb-android in your projects:</p>
+
+<ol>
+<li>You can download the released jar file in the <a href="https://github.com/wuman/orientdb-android/downloads">Downloads section</a>.</li>
+<li>
+<p>If you use Maven to build your project you can simply add a dependency to 
+the desired component of the library.</p>
+
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.wu-man&lt;/groupId&gt;
+    &lt;artifactId&gt;orient[db]-android-*&lt;/artifactId&gt;
+    &lt;version&gt;1.1.0.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+</li>
+</ol><h2>Introduction to OrientDB</h2>
+
+<p><a href="http://code.google.com/p/orient/">OrientDB</a> is an open source 
+<a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> DBMS with both the features of 
+Document and Graph DBMS. It's written in Java and it's amazing fast: it can store 
+up to 150,000 records per second on common hardware.</p>
+
+<p>OrientDB is in its core a <a href="http://en.wikipedia.org/wiki/Graph_database">graph database</a>,
+although it also offers the interface of a document database. When used a 
+document database, the relationships are managed as in graph databases with 
+direct connections among records. You can traverse entire or part of trees and 
+graphs of records in few milliseconds.</p>
+
+<p>To see how OrientDB compares with other databases, take a look at</p>
+
+<ul>
+<li><a href="http://code.google.com/p/orient/wiki/GraphDBComparison">GraphDB comparison</a></li>
+<li><a href="http://code.google.com/p/orient/wiki/DocumentDBComparison">DocumentDB comparison</a></li>
+</ul><h2>Contribute</h2>
+
+<p>If you would like to contribute code you can do so through GitHub by forking 
+the repository and sending a pull request.</p>
+
+<h2>Developed By</h2>
+
+<ul>
+<li>Android porting contributor
+
+<ul>
+<li>David Wu - <a href="mailto:david@wu-man.com">david@wu-man.com</a> - <a href="http://blog.wu-man.com">http://blog.wu-man.com</a>
+</li>
+</ul>
+</li>
+<li>Original contributors to OrientDB
+
+<ul>
+<li>Luca Garulli - <a href="mailto:l.garulli@orientechnologies.com">l.garulli@orientechnologies.com</a> - <a href="http://www.orientechnologies.com">http://www.orientechnologies.com</a>
+</li>
+<li>Luca Molino - <a href="mailto:molino.luca@gmail.com">molino.luca@gmail.com</a>
+</li>
+<li>Andrey Lomakin - <a href="mailto:lomakin.andrey@gmail.com">lomakin.andrey@gmail.com</a> </li>
+</ul>
+</li>
+</ul><h2>License</h2>
+
+<pre><code>Copyright 2012 David Wu
+Copyright 2010-2012 Luca Garulli (l.garulli--at--orientechnologies.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-4156099-13");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
