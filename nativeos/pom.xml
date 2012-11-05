@@ -17,9 +17,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>orientdb-parent</artifactId>
-        <groupId>com.orientechnologies</groupId>
-        <version>1.1.0</version>
+        <artifactId>orientdb-android-parent</artifactId>
+        <groupId>com.wu-man</groupId>
+        <version>1.1.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -36,7 +36,7 @@
         <javac.target.version>1.6</javac.target.version>
     </properties>
 
-    <artifactId>orientdb-nativeos</artifactId>
+    <artifactId>orientdb-android-nativeos</artifactId>
 
     <dependencies>
         <dependency>
@@ -45,8 +45,8 @@
             <version>3.4.0</version>
         </dependency>
         <dependency>
-            <groupId>com.orientechnologies</groupId>
-            <artifactId>orient-commons</artifactId>
+            <groupId>com.wu-man</groupId>
+            <artifactId>orient-android-commons</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

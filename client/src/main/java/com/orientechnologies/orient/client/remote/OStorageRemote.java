@@ -22,7 +22,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -32,11 +31,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
-import javax.naming.NamingException;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
+import org.xbill.DNS.Lookup;
+import org.xbill.DNS.Record;
+import org.xbill.DNS.TXTRecord;
+import org.xbill.DNS.TextParseException;
+import org.xbill.DNS.Type;
 
 import com.orientechnologies.common.concur.OTimeoutException;
 import com.orientechnologies.common.concur.lock.OModificationOperationProhibitedException;
@@ -1335,29 +1334,26 @@ public class OStorageRemote extends OStorageAbstract implements OStorageProxy {
       final String primaryServer = serverURLs.get(0);
 
       try {
-        final Hashtable<String, String> env = new Hashtable<String, String>();
-        env.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-        env.put("com.sun.jndi.ldap.connect.timeout",
-            OGlobalConfiguration.NETWORK_BINARY_DNS_LOADBALANCING_TIMEOUT.getValueAsString());
-        final DirContext ictx = new InitialDirContext(env);
-        final String hostName = primaryServer.indexOf(":") == -1 ? primaryServer : primaryServer.substring(0,
-            primaryServer.indexOf(":"));
-        final Attributes attrs = ictx.getAttributes(hostName, new String[] { "TXT" });
-        final Attribute attr = attrs.get("TXT");
-        if (attr != null) {
-          String configuration = (String) attr.get();
-          if (configuration.startsWith(""))
-            configuration = configuration.substring(1, configuration.length() - 1);
-          if (configuration != null) {
-            final String[] parts = configuration.split(" ");
-            for (String part : parts) {
-              if (part.startsWith("s=")) {
-                addHost(part.substring("s=".length()));
-              }
+        final String hostName = primaryServer.indexOf(":") == -1 ? primaryServer
+                : primaryServer
+                        .substring(0, primaryServer.indexOf(":"));
+        Record[] records = new Lookup(hostName, Type.TXT).run();
+        for (Record record : records) {
+            TXTRecord txtRecords = (TXTRecord) record;
+            List<String> attrs = txtRecords.getStrings();
+            if (attrs != null && attrs.size() > 0) {
+                String configuration = attrs.get(0);
+                if (configuration != null) {
+                    final String[] parts = configuration.split(" ");
+                    for (String part : parts) {
+                        if (part.startsWith("s=")) {
+                            addHost(part.substring("s=".length()));
+                        }
+                    }
+                }
             }
-          }
         }
-      } catch (NamingException e) {
+      } catch (TextParseException e) {
       }
     }
   }

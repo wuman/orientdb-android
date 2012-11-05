@@ -3,27 +3,51 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.orientechnologies</groupId>
-    <artifactId>orientdb-parent</artifactId>
-    <version>1.1.0</version>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <groupId>com.wu-man</groupId>
+    <artifactId>orientdb-android-parent</artifactId>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>OrientDB</name>
-    <description>OrientDB NoSQL document graph dbms</description>
+    <name>OrientDB-Android</name>
+    <description>Android Port of OrientDB: NoSQL Document Graph DBMS</description>
     <url>http://www.orientechnologies.com</url>
     <inceptionYear>2009</inceptionYear>
-    <organization>
-        <name>Orient Technologies</name>
-        <url>http://www.orientechnologies.com</url>
-    </organization>
     <licenses>
         <license>
             <name>Apache 2</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/wuman/orientdb-android/issues</url>
+    </issueManagement>
+    <scm>
+        <url>https://github.com/wuman/orientdb-android</url>
+        <connection>scm:git:git://github.com/wuman/orientdb-android.git</connection>
+        <developerConnection>scm:git:git@github.com:wuman/orientdb-android.git</developerConnection>
+    </scm>
+    <organization>
+        <name>David Wu</name>
+        <url>http://blog.wu-man.com</url>
+    </organization>
     <developers>
+        <developer>
+            <name>David Wu</name>
+            <email>david@wu-man.com</email>
+            <id>wuman</id>
+            <url>http://blog.wu-man.com</url>
+            <timezone>+8</timezone>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
         <developer>
             <id>l.garulli</id>
             <name>Luca Garulli</name>
@@ -59,13 +83,6 @@
         </developer>
     </developers>
 
-    <mailingLists>
-        <mailingList>
-            <name>google groups</name>
-            <archive>http://groups.google.com/group/orient-database/topics</archive>
-        </mailingList>
-    </mailingLists>
-
     <modules>
         <module>client</module>
         <module>commons</module>
@@ -74,39 +91,26 @@
         <module>distribution</module>
         <module>enterprise</module>
         <module>object</module>
-        <module>server</module>
+        <!--<module>server</module>-->
         <module>tools</module>
-        <module>tests</module>
-        <module>distributed</module>
+        <!--<module>tests</module>-->
+        <!--<module>distributed</module>-->
         <!--<module>clustered-client</module>-->
         <!--<module>blueprints</module>-->
-        <module>graphdb</module>
+        <!--<module>graphdb</module>-->
     </modules>
 
-    <scm>
-        <connection>scm:svn:http://orient.googlecode.com/svn/trunk/</connection>
-        <developerConnection>scm:svn:https://orient.googlecode.com/svn/trunk/</developerConnection>
-        <url>http://orient.googlecode.com/svn/trunk/</url>
-    </scm>
-    <issueManagement>
-        <system>google code</system>
-        <url>http://code.google.com/p/orient/issues/list</url>
-    </issueManagement>
-    <ciManagement>
-        <system>jenkins</system>
-        <url>http://datastorm.com.ua/jenkins/</url>
-    </ciManagement>
     <distributionManagement>
-        <repository>
-            <id>oss.sonatype.org</id>
-            <name>OrientDB Maven2 Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
         <snapshotRepository>
-            <id>oss.sonatype.org</id>
-            <name>OrientDB Maven2 Snapshot Repository</name>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus snapshot repository</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <name>Sonatype Nexus release repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
     </distributionManagement>
 
     <!-- required to include Tinkerpop SNAPSHOT dependencies -->
@@ -118,6 +122,20 @@
         </repository>
     </repositories>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>4.1.1.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.wu-man</groupId>
+            <artifactId>android-bsf-api</artifactId>
+            <version>3.1.2</version>
+        </dependency>
+    </dependencies>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
@@ -125,7 +143,7 @@
         <javac.src.version>1.5</javac.src.version>
         <javac.target.version>1.5</javac.target.version>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
-        <implementation.build>${scmBranch}@r${buildNumber}</implementation.build>
+        <implementation.build>${project.version}@r${maven.build.timestamp}</implementation.build>
         <!--
              | Configuration properties for the OSGi maven-bundle-plugin
             -->
@@ -137,11 +155,29 @@
              | shared build/report plugins version
             -->
         <surefire.version>2.12</surefire.version>
+
+        <android.version>4.1.1.4</android.version>
+        <android.platform>16</android.platform>
+        <android-maven.version>3.4.0</android-maven.version>
+
+        <github.global.server>github</github.global.server>
     </properties>
 
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <version>${android-maven.version}</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <sdk>
+                            <platform>${android.platform}</platform>
+                        </sdk>
+                    </configuration>
+                </plugin>
+
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>2.4.1</version>
@@ -227,39 +263,18 @@
                     <version>2.2.2</version>
                     <configuration>
                         <mavenExecutorId>forked-path</mavenExecutorId>
-                        <useReleaseProfile>false</useReleaseProfile>
                         <localCheckout>true</localCheckout>
                         <pushChanges>false</pushChanges>
                         <allowTimestampedSnapshots>true</allowTimestampedSnapshots>
-                        <arguments>-Prelease</arguments>
+                        <arguments>-Prelease -Dgpg.passphrase=${gpg.passphrase}</arguments>
+                        <releaseProfiles>release-sign-artifacts</releaseProfiles>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
 
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>buildnumber-maven-plugin</artifactId>
-                <version>1.0</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>create</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <doCheck>false</doCheck>
-                    <doUpdate>false</doUpdate>
-                    <!-- Use committed revision so it does not change every time svn update is run -->
-                    <useLastCommittedRevision>true</useLastCommittedRevision>
-                    <!-- default revision number if unavailable -->
-                    <revisionOnScmFailure>??????</revisionOnScmFailure>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -441,6 +456,10 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.4</version>
+                        <configuration>
+                            <passphrase>${gpg.passphrase}</passphrase>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -520,6 +539,9 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <version>1.4</version>
+                        <configuration>
+                            <passphrase>${gpg.passphrase}</passphrase>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>

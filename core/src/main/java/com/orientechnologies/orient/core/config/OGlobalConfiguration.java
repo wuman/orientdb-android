@@ -16,7 +16,6 @@
 package com.orientechnologies.orient.core.config;
 
 import java.io.PrintStream;
-import java.lang.management.OperatingSystemMXBean;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.ConsoleHandler;
@@ -467,19 +466,19 @@ public enum OGlobalConfiguration {
       // 64 BIT
 
       if (FILE_MMAP_MAX_MEMORY.getValueAsInteger() == 134217728) {
-        final OperatingSystemMXBean bean = java.lang.management.ManagementFactory.getOperatingSystemMXBean();
-
-        try {
-          final Class<?> cls = Class.forName("com.sun.management.OperatingSystemMXBean");
-          if (cls.isAssignableFrom(bean.getClass())) {
-            final Long maxOsMemory = (Long) cls.getMethod("getTotalPhysicalMemorySize", new Class[] {}).invoke(bean);
-            final long maxProcessMemory = Runtime.getRuntime().maxMemory();
-            long mmapBestMemory = (maxOsMemory.longValue() - maxProcessMemory) / 2;
-            FILE_MMAP_MAX_MEMORY.setValue(mmapBestMemory);
-          }
-        } catch (Exception e) {
-          // SUN JMX CLASS NOT AVAILABLE: CAN'T AUTO TUNE THE ENGINE
-        }
+//        final OperatingSystemMXBean bean = java.lang.management.ManagementFactory.getOperatingSystemMXBean();
+//
+//        try {
+//          final Class<?> cls = Class.forName("com.sun.management.OperatingSystemMXBean");
+//          if (cls.isAssignableFrom(bean.getClass())) {
+//            final Long maxOsMemory = (Long) cls.getMethod("getTotalPhysicalMemorySize", new Class[] {}).invoke(bean);
+//            final long maxProcessMemory = Runtime.getRuntime().maxMemory();
+//            long mmapBestMemory = (maxOsMemory.longValue() - maxProcessMemory) / 2;
+//            FILE_MMAP_MAX_MEMORY.setValue(mmapBestMemory);
+//          }
+//        } catch (Exception e) {
+//          // SUN JMX CLASS NOT AVAILABLE: CAN'T AUTO TUNE THE ENGINE
+//        }
       }
     } else {
       // 32 BIT, USE THE DEFAULT CONFIGURATION

@@ -5,19 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.orientechnologies</groupId>
-        <artifactId>orientdb-parent</artifactId>
-        <version>1.1.0</version>
+        <groupId>com.wu-man</groupId>
+        <artifactId>orientdb-android-parent</artifactId>
+        <version>1.1.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
-    <artifactId>orient-commons</artifactId>
+    <artifactId>orient-android-commons</artifactId>
 
     <name>Orient Commons</name>
 
     <properties>
         <osgi.export>com.orientechnologies.common.*</osgi.export>
-        <osgi.import>javax.imageio.spi.*,sun.misc.*;resolution:=optional</osgi.import>
+        <osgi.import>com.wuman.spi.*;resolution:=optional</osgi.import>
     </properties>
 
     <dependencies>

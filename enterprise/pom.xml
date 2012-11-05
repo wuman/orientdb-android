@@ -4,12 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.orientechnologies</groupId>
-    <artifactId>orientdb-parent</artifactId>
-    <version>1.1.0</version>
+    <groupId>com.wu-man</groupId>
+    <artifactId>orientdb-android-parent</artifactId>
+    <version>1.1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>orientdb-enterprise</artifactId>
+  <artifactId>orientdb-android-enterprise</artifactId>
 
   <name>OrientDB Enterprise</name>
 
@@ -20,8 +20,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.orientechnologies</groupId>
-      <artifactId>orientdb-core</artifactId>
+      <groupId>com.wu-man</groupId>
+      <artifactId>orientdb-android-core</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

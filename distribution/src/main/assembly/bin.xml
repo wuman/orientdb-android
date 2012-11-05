@@ -12,48 +12,6 @@
 
   <fileSets>
     <!--
-     | copy benchmarks scripts
-    -->
-    <fileSet>
-      <directory>${basedir}/../server/benchmarks</directory>
-      <outputDirectory>benchmark</outputDirectory>
-      <excludes>
-        <exclude>*.sh</exclude>
-      </excludes>
-      <filtered>true</filtered>
-    </fileSet>
-    <fileSet>
-      <directory>${basedir}/../server/benchmarks</directory>
-      <outputDirectory>benchmark</outputDirectory>
-      <includes>
-        <include>*.sh</include>
-      </includes>
-      <fileMode>755</fileMode>
-      <filtered>true</filtered>
-    </fileSet>
-
-    <!--
-     | copy server scripts
-    -->
-    <fileSet>
-      <directory>${basedir}/../server/script</directory>
-      <outputDirectory>bin</outputDirectory>
-      <includes>
-        <include>*.bat</include>
-      </includes>
-      <filtered>true</filtered>
-    </fileSet>
-    <fileSet>
-      <directory>${basedir}/../server/script</directory>
-      <outputDirectory>bin</outputDirectory>
-      <includes>
-        <include>*.sh</include>
-      </includes>
-      <fileMode>755</fileMode>
-      <filtered>true</filtered>
-    </fileSet>
-
-    <!--
      | copy tools scripts
     -->
     <fileSet>
@@ -72,44 +30,6 @@
       </includes>
       <fileMode>755</fileMode>
       <filtered>true</filtered>
-    </fileSet>
-
-    <!--
-     | server configuration
-    -->
-    <fileSet>
-      <directory>${basedir}/../server/config</directory>
-      <outputDirectory>config</outputDirectory>
-    </fileSet>
-
-    <!--
-     | server browsable documentation
-    -->
-    <fileSet>
-      <directory>${basedir}/../server/src/site</directory>
-      <outputDirectory>www</outputDirectory>
-    </fileSet>
-
-    <!--
-     | creates an empty log directory
-    -->
-    <fileSet>
-      <directory>${basedir}/../server/config</directory>
-      <outputDirectory>log</outputDirectory>
-      <excludes>
-        <exclude>*</exclude>
-      </excludes>
-    </fileSet>
-
-    <!--
-     | creates an empty databases directory
-    -->
-    <fileSet>
-      <directory>${basedir}/../server/config</directory>
-      <outputDirectory>databases</outputDirectory>
-      <excludes>
-        <exclude>*</exclude>
-      </excludes>
     </fileSet>
   </fileSets>
 

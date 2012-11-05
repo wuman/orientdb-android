@@ -16,6 +16,7 @@
 package com.orientechnologies.orient.enterprise.command;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.script.Bindings;
@@ -49,7 +50,8 @@ public class OCommandExecutorScript extends OCommandExecutorAbstract {
     if (engines == null) {
       engines = new HashMap<String, ScriptEngine>();
       scriptEngineManager = new ScriptEngineManager();
-      for (ScriptEngineFactory f : scriptEngineManager.getEngineFactories()) {
+      List<ScriptEngineFactory> factories = scriptEngineManager.getEngineFactories();
+      for (ScriptEngineFactory f : factories) {
         engines.put(f.getLanguageName().toLowerCase(), f.getScriptEngine());
 
         if (defaultLanguage == null)

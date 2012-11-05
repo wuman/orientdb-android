@@ -2,7 +2,7 @@ package com.orientechnologies.common.util;
 
 import java.util.Iterator;
 
-import javax.imageio.spi.ServiceRegistry;
+import com.wuman.spi.ServiceRegistry;
 
 public class OClassLoaderHelper {
 

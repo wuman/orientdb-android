@@ -33,6 +33,7 @@ proguard
 android-support-v4.jar
 proguard.cfg
 proguard-project.txt
+AndroidManifest.xml
 
 #Ant
 build.xml
