@@ -26,7 +26,7 @@ Note that orientdb-android is still under development and  only
 `orient-android-commons` and `orientdb-android-core` have been used and tested 
 in the wild, so use it at your own risk. We welcome contributions and feedbacks.
 
-The current release of orientdb-android is 1.1.0.0, which is in line with version
+The current release of orientdb-android is 1.1.0.x, which is in line with version
 1.1.0 of the upstream OrientDB. 
 
 
@@ -42,7 +42,7 @@ There are two ways to include orientdb-android in your projects:
         <dependency>
             <groupId>com.wu-man</groupId>
             <artifactId>orient[db]-android-*</artifactId>
-            <version>1.1.0.0</version>
+            <version>1.1.0.1</version>
         </dependency>
 
 
