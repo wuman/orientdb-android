@@ -18,7 +18,7 @@
     <parent>
         <artifactId>orientdb-android-parent</artifactId>
         <groupId>com.wu-man</groupId>
-        <version>1.1.0.1-SNAPSHOT</version>
+        <version>1.1.0.1</version>
         <relativePath>../</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
